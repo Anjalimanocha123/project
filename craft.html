@@ -1,0 +1,1090 @@
+<!doctype html>
+<html lang="en" class="h-full scroll-smooth">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Craft Haven - Master the Art of Handmade Creation</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&amp;family=Quicksand:wght@300;400;500;600;700&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    
+    .font-display { font-family: 'Playfair Display', Georgia, serif; }
+    .font-body { font-family: 'Quicksand', 'Segoe UI', sans-serif; }
+    .font-sans { font-family: 'Poppins', sans-serif; }
+    
+    /* Main Gradients */
+    .gradient-bg {
+      background: linear-gradient(135deg, #fef7ed 0%, #fdf2e9 50%, #fef9f3 100%);
+    }
+    
+    .gradient-dark {
+      background: linear-gradient(135deg, #2d1810 0%, #3d2414 100%);
+    }
+    
+    .gradient-warm {
+      background: linear-gradient(135deg, #d4a574 0%, #c99a6e 100%);
+    }
+    
+    /* Animation Keyframes */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-25px) rotate(5deg); }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-60px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(60px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.85); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(184, 134, 11, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(184, 134, 11, 0.7); }
+    }
+    
+    @keyframes pulse-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    
+    @keyframes glow-rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    @keyframes shimmer-wave {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
+    
+    /* Animation Classes */
+    .floating { animation: float 6s ease-in-out infinite; }
+    .fade-in { animation: fadeIn 0.8s ease-out forwards; }
+    .slide-up { animation: slideUp 0.7s ease-out forwards; }
+    .slide-in-left { animation: slideInLeft 0.8s ease-out forwards; }
+    .slide-in-right { animation: slideInRight 0.8s ease-out forwards; }
+    .scale-in { animation: scaleIn 0.7s ease-out forwards; }
+    .pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+    .pulse-bounce { animation: pulse-bounce 2s ease-in-out infinite; }
+    .glow-rotate { animation: glow-rotate 20s linear infinite; }
+    
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    .stagger-4 { animation-delay: 0.4s; }
+    .stagger-5 { animation-delay: 0.5s; }
+    .stagger-6 { animation-delay: 0.6s; }
+    
+    /* Card Styles */
+    .craft-card {
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 16px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .craft-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 30px 60px rgba(180, 130, 90, 0.3);
+    }
+    
+    .craft-card-image {
+      width: 100%;
+      height: 280px;
+      background: linear-gradient(135deg, #d4a574 0%, #c99a6e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 70px;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .craft-card-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0);
+      transition: background 0.5s ease;
+    }
+    
+    .craft-card:hover .craft-card-image::before {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .craft-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .craft-card:hover .craft-card-image {
+      transform: scale(1.15);
+    }
+    
+    /* Button Styles */
+    .btn-craft {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+    
+    .btn-craft::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: left 0.6s ease;
+    }
+    
+    .btn-craft:hover::before {
+      left: 100%;
+    }
+    
+    /* Video Card Styles */
+    .video-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      background: white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .video-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px rgba(180, 130, 90, 0.25);
+    }
+    
+    .video-card-image {
+      width: 100%;
+      height: 240px;
+      background: linear-gradient(135deg, #8b4513 0%, #b8860b 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+      position: relative;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+    }
+    
+    .video-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .video-card:hover .video-card-image {
+      transform: scale(1.12);
+    }
+    
+    .play-button {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .video-card:hover .play-button {
+      background: white;
+      transform: translate(-50%, -50%) scale(1.2);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    }
+    
+    .play-button::after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 18px solid #8b4513;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+      margin-left: 4px;
+    }
+    
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+    
+    .nav-link {
+      position: relative;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #b8860b, #d4a574);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    /* Hero Section */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #fef7ed 0%, #fdf2e9 50%, #fef9f3 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      top: -200px;
+      right: -200px;
+    }
+    
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(184, 134, 11, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      bottom: -150px;
+      left: -150px;
+    }
+    
+    /* Badge Styles */
+    .badge {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 20px;
+      background: rgba(184, 134, 11, 0.1);
+      color: #8b4513;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid rgba(184, 134, 11, 0.3);
+    }
+    
+    /* Stats Cards */
+    .stat-card {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s ease;
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(180, 130, 90, 0.2);
+    }
+    
+    /* Testimonial Cards */
+    .testimonial-card {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border-left: 5px solid #b8860b;
+      transition: all 0.4s ease;
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(180, 130, 90, 0.2);
+    }
+    
+    /* Filter Buttons */
+    .filter-btn {
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: 2px solid #d4a574;
+      background: transparent;
+      color: #8b4513;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .filter-btn.active {
+      background: #8b4513;
+      color: white;
+      border-color: #8b4513;
+      transform: scale(1.05);
+    }
+    
+    .filter-btn:hover {
+      background: #d4a574;
+      color: white;
+      border-color: #d4a574;
+    }
+    
+    /* Modal */
+    .modal-overlay {
+      backdrop-filter: blur(8px);
+      animation: fadeIn 0.3s ease-out;
+    }
+    
+    /* Modal Video */
+    .video-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .video-modal-content {
+      max-width: 90vw;
+      width: 100%;
+      max-height: 80%;
+      border-radius: 16px;
+      overflow: hidden;
+      animation: scaleIn 0.4s ease-out;
+      background: white;
+    }
+    
+    .close-video {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 45px;
+      height: 45px;
+      background: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .close-video:hover {
+      transform: rotate(90deg) scale(1.1);
+      background: #f0e5d8;
+    }
+    
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background: white;
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      z-index: 99;
+    }
+    
+    .mobile-menu.active {
+      display: flex;
+      animation: slideDown 0.3s ease-out;
+    }
+    
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Section Spacing */
+    .section-padding {
+      padding: 80px 20px;
+    }
+    
+    @media (max-width: 768px) {
+      .section-padding {
+        padding: 60px 20px;
+      }
+    }
+    
+    /* Input Focus */
+    input:focus, textarea:focus {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(184, 134, 11, 0.2);
+    }
+    
+    /* Smooth Scroll */
+    html { scroll-behavior: smooth; }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: #b8860b;
+      border-radius: 5px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: #8b4513;
+    }
+  </style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <style>body { box-sizing: border-box; }</style>
+ </head>
+ <body class="h-full font-body gradient-bg">
+  <div id="app" class="h-full overflow-auto"><!-- Navigation Bar -->
+   <nav class="navbar fade-in">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+     <div class="flex justify-between items-center">
+      <div class="flex items-center gap-2 sm:gap-3 floating">
+       <div class="text-2xl sm:text-3xl font-display font-bold text-amber-900">
+        🎨
+       </div>
+       <h1 class="text-lg sm:text-2xl font-display font-bold text-amber-900">Craft Haven</h1>
+      </div>
+      <div class="hidden md:flex gap-8">
+       <a href="#home" class="nav-link text-amber-900 hover:text-amber-700">Home</a> <a href="#crafts" class="nav-link text-amber-900 hover:text-amber-700">Crafts</a> <a href="#tutorials" class="nav-link text-amber-900 hover:text-amber-700">Tutorials</a> <a href="#gallery" class="nav-link text-amber-900 hover:text-amber-700">Gallery</a> <a href="#contact" class="nav-link text-amber-900 hover:text-amber-700">Contact</a>
+      </div><button class="md:hidden text-amber-900 text-2xl font-bold" onclick="toggleMobileMenu()">☰</button>
+     </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+     <a href="#home" class="text-amber-900 font-semibold p-2 hover:bg-amber-50 rounded">Home</a> <a href="#crafts" class="text-amber-900 font-semibold p-2 hover:bg-amber-50 rounded">Crafts</a> <a href="#tutorials" class="text-amber-900 font-semibold p-2 hover:bg-amber-50 rounded">Tutorials</a> <a href="#gallery" class="text-amber-900 font-semibold p-2 hover:bg-amber-50 rounded">Gallery</a> <a href="#contact" class="text-amber-900 font-semibold p-2 hover:bg-amber-50 rounded">Contact</a>
+    </div>
+   </nav><!-- Hero Section -->
+   <section id="home" class="hero-section pt-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
+     <div class="slide-in-left">
+      <span class="badge slide-up">✨ Welcome to Craft Haven</span>
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-amber-900 mb-6 mt-4 slide-up stagger-1">Master the Art of Handmade Creation</h1>
+      <p class="text-lg sm:text-xl text-gray-700 mb-8 slide-up stagger-2 leading-relaxed">Discover limitless possibilities with our comprehensive collection of craft tutorials. From beginner-friendly projects to advanced techniques, unlock your creativity and join thousands of passionate crafters worldwide.</p>
+      <div class="flex gap-4 flex-wrap slide-up stagger-3">
+       <button onclick="scrollToSection('crafts')" class="btn-craft bg-amber-900 text-white px-8 py-4 text-lg hover:bg-amber-800 pulse-glow">Explore Crafts</button> <button onclick="scrollToSection('tutorials')" class="btn-craft border-2 border-amber-900 text-amber-900 px-8 py-4 text-lg hover:bg-amber-100">Watch Tutorials</button>
+      </div>
+      <div class="grid grid-cols-3 gap-8 mt-12 slide-up stagger-4">
+       <div class="text-center">
+        <div class="text-3xl font-bold text-amber-900">
+         200+
+        </div>
+        <p class="text-gray-600">Crafts</p>
+       </div>
+       <div class="text-center">
+        <div class="text-3xl font-bold text-amber-900">
+         10k+
+        </div>
+        <p class="text-gray-600">Learners</p>
+       </div>
+       <div class="text-center">
+        <div class="text-3xl font-bold text-amber-900">
+         24/7
+        </div>
+        <p class="text-gray-600">Support</p>
+       </div>
+      </div>
+     </div>
+     <div class="slide-in-right flex justify-center">
+      <div class="w-80 h-80 rounded-full overflow-hidden shadow-2xl floating pulse-bounce bg-amber-100 border-8 border-white flex items-center justify-center"><img src="" alt="Hero craft image" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #d4a574 0%, #c99a6e 100%)'">
+        <img src="bouquet.jpg.jpeg">
+      </div>
+     </div>
+    </div>
+   </section><!-- Features Section -->
+   <section class="section-padding bg-white/70">
+    <div class="max-w-7xl mx-auto">
+     <h2 class="text-5xl font-display font-bold text-amber-900 mb-4 text-center slide-up">Why Choose Craft Haven?</h2>
+     <p class="text-center text-gray-600 mb-12 slide-up stagger-1 max-w-2xl mx-auto">Everything you need to become a master crafter</p>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="stat-card fade-in stagger-1">
+       <div class="text-5xl mb-4">
+        🎓
+       </div>
+       <h3 class="font-display font-bold text-amber-900 mb-2">Expert-Led</h3>
+       <p class="text-gray-600">Learn from industry professionals with decades of experience in their craft</p>
+      </div>
+      <div class="stat-card fade-in stagger-2">
+       <div class="text-5xl mb-4">
+        📱
+       </div>
+       <h3 class="font-display font-bold text-amber-900 mb-2">Learn Anywhere</h3>
+       <p class="text-gray-600">Access tutorials on any device, anytime, anywhere at your own pace</p>
+      </div>
+      <div class="stat-card fade-in stagger-3">
+       <div class="text-5xl mb-4">
+        🏆
+       </div>
+       <h3 class="font-display font-bold text-amber-900 mb-2">Certificates</h3>
+       <p class="text-gray-600">Earn recognized certificates upon completing craft courses</p>
+      </div>
+      <div class="stat-card fade-in stagger-4">
+       <div class="text-5xl mb-4">
+        👥
+       </div>
+       <h3 class="font-display font-bold text-amber-900 mb-2">Community</h3>
+       <p class="text-gray-600">Connect with millions of crafters and share your creations</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Crafts Section -->
+   <section id="crafts" class="section-padding bg-gradient-to-b from-transparent to-amber-50">
+    <div class="max-w-7xl mx-auto">
+     <h2 class="text-5xl font-display font-bold text-amber-900 mb-2 text-center slide-up">Craft Categories</h2>
+     <p class="text-center text-gray-600 mb-12 slide-up stagger-1">Explore our diverse range of handmade crafts</p><!-- Filter Buttons -->
+     <div class="flex justify-center gap-3 flex-wrap mb-12 slide-up stagger-2">
+      <button class="filter-btn active" onclick="filterCrafts('all')">All Crafts</button> <button class="filter-btn" onclick="filterCrafts('textile')">Textile</button> <button class="filter-btn" onclick="filterCrafts('pottery')">Pottery</button> <button class="filter-btn" onclick="filterCrafts('jewelry')">Jewelry</button> <button class="filter-btn" onclick="filterCrafts('woodwork')">Woodwork</button>
+     </div>
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Craft Card 1 -->
+      <div class="craft-card fade-in stagger-1 craft-item" data-category="textile">
+       <div class="craft-card-image"><img src="sweater.jpg.jpeg" alt="Knitting craft" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
+       </div>
+       <div class="p-6">
+        <h3 class="text-2xl font-display font-bold text-amber-900 mb-2">Knitting</h3>
+        <p class="text-gray-600 mb-4">Master the art of creating beautiful knitted items, from scarves to sweaters</p>
+        <div class="flex items-center justify-between">
+         <span class="badge">Beginner</span> <button class="text-amber-900 font-semibold hover:text-amber-700">Learn More →</button>
+        </div>
+       </div>
+      </div><!-- Craft Card 2 -->
+      <div class="craft-card fade-in stagger-2 craft-item" data-category="textile">
+       <div class="craft-card-image"><img src="shiv.jpg.jpeg" alt="Painting craft" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
+       </div>
+       <div class="p-6">
+        <h3 class="text-2xl font-display font-bold text-amber-900 mb-2">Painting</h3>
+        <p class="text-gray-600 mb-4">Explore watercolor, acrylic, and oil painting techniques with step-by-step guides</p>
+        <div class="flex items-center justify-between">
+         <span class="badge">Intermediate</span> <button class="text-amber-900 font-semibold hover:text-amber-700">Learn More →</button>
+        </div>
+       </div>
+      </div><!-- Craft Card 3 -->
+      <div class="craft-card fade-in stagger-3 craft-item" data-category="pottery">
+       <div class="craft-card-image"><img src="poetry.jpg.jpeg" alt="Pottery craft" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
+       </div>
+       <div class="p-6">
+        <h3 class="text-2xl font-display font-bold text-amber-900 mb-2">Pottery</h3>
+        <p class="text-gray-600 mb-4">Learn hand-building and wheel-throwing techniques to create stunning ceramics</p>
+        <div class="flex items-center justify-between">
+         <span class="badge">Intermediate</span> <button class="text-amber-900 font-semibold hover:text-amber-700">Learn More →</button>
+        </div>
+       </div>
+      </div><!-- Craft Card 4 -->
+      <div class="craft-card fade-in stagger-4 craft-item" data-category="woodwork">
+       <div class="craft-card-image"><img src="wood.jpg.jpeg" alt="Woodworking craft" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
+       </div>
+       <div class="p-6">
+        <h3 class="text-2xl font-display font-bold text-amber-900 mb-2">Woodworking</h3>
+        <p class="text-gray-600 mb-4">Create stunning wooden furniture and decorative pieces with professional techniques</p>
+        <div class="flex items-center justify-between">
+         <span class="badge">Advanced</span> <button class="text-amber-900 font-semibold hover:text-amber-700">Learn More →</button>
+        </div>
+       </div>
+      </div><!-- Craft Card 5 -->
+      <div class="craft-card fade-in stagger-5 craft-item" data-category="jewelry">
+       <div class="craft-card-image"><img src="eyearing.jpg.jpeg" alt="Jewelry craft" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
+       </div>
+       <div class="p-6">
+        <h3 class="text-2xl font-display font-bold text-amber-900 mb-2">Jewelry Making</h3>
+        <p class="text-gray-600 mb-4">Design and craft elegant jewelry pieces using traditional and modern methods</p>
+        <div class="flex items-center justify-between">
+         <span class="badge">Beginner</span> <button class="text-amber-900 font-semibold hover:text-amber-700">Learn More →</button>
+        </div>
+       </div>
+      </div><!-- Craft Card 6 -->
+      <div class="craft-card fade-in stagger-6 craft-item" data-category="textile">
+       <div class="craft-card-image"><img src="embroidery.jpg.jpeg" alt="Embroidery craft" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
+       </div>
+       <div class="p-6">
+        <h3 class="text-2xl font-display font-bold text-amber-900 mb-2">Embroidery</h3>
+        <p class="text-gray-600 mb-4">Create beautiful embroidered designs on fabric with traditional stitching techniques</p>
+        <div class="flex items-center justify-between">
+         <span class="badge">Beginner</span> <button class="text-amber-900 font-semibold hover:text-amber-700">Learn More →</button>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Tutorial Videos Section -->
+   <section id="tutorials" class="section-padding bg-white/50">
+    <div class="max-w-7xl mx-auto">
+     <h2 class="text-5xl font-display font-bold text-amber-900 mb-2 text-center slide-up">Video Tutorials</h2>
+     <p class="text-center text-gray-600 mb-12 slide-up stagger-1">Learn from expert crafters with detailed step-by-step videos</p>
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Video 1 -->
+      <div class="video-card fade-in stagger-1" onclick="playVideo('https://www.youtube.com/embed/5qap5aO4i9A')">
+       <div class="video-card-image"><img src="sweater.jpg.jpeg" alt="Knitting tutorial" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
+       </div>
+       <div class="play-button"></div>
+       <div class="p-4 bg-white">
+        <h3 class="font-display font-bold text-amber-900 mb-1 text-lg">Beginner Knitting Basics</h3>
+        <p class="text-sm text-gray-600 mb-3">Learn fundamental knitting stitches and techniques</p>
+        <div class="flex justify-between items-center text-xs text-gray-500">
+         <span>⏱️ 25 min</span> <span>⭐ 4.9</span>
+        </div>
+       </div>
+      </div><!-- Video 2 -->
+      <div class="video-card fade-in stagger-2" onclick="playVideo('https://youtube.com/shorts/MqQqzGj7xg4?si=OEXoGJAalkVDXOvv')">
+       <div class="video-card-image"><img src="shiv.jpg.jpeg" alt="Painting tutorial" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
+       </div>
+       <div class="play-button"></div>
+       <div class="p-4 bg-white">
+        <h3 class="font-display font-bold text-amber-900 mb-1 text-lg">Watercolor Painting 101</h3>
+        <p class="text-sm text-gray-600 mb-3">Master watercolor painting essentials and techniques</p>
+        <div class="flex justify-between items-center text-xs text-gray-500">
+         <span>⏱️ 32 min</span> <span>⭐ 4.8</span>
+        </div>
+       </div>
+      </div><!-- Video 3 -->
+      <div class="video-card fade-in stagger-3" onclick="playVideo('https://www.youtube.com/embed/4p4qZ-VpD74')">
+       <div class="video-card-image"><img src="pot.jpg.jpeg" alt="Pottery tutorial" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
+       </div>
+       <div class="play-button"></div>
+       <div class="p-4 bg-white">
+        <h3 class="font-display font-bold text-amber-900 mb-1 text-lg">Pottery Wheel Basics</h3>
+        <p class="text-sm text-gray-600 mb-3">Discover the basics of working with a pottery wheel</p>
+        <div class="flex justify-between items-center text-xs text-gray-500">
+         <span>⏱️ 40 min</span> <span>⭐ 5.0</span>
+        </div>
+       </div>
+      </div><!-- Video 4 -->
+      <div class="video-card fade-in stagger-4" onclick="playVideo('https://www.youtube.com/embed/d-0fKPqEfn0')">
+       <div class="video-card-image"><img src="work.jpg.jpeg" alt="Woodworking tutorial" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
+       </div>
+       <div class="play-button"></div>
+       <div class="p-4 bg-white">
+        <h3 class="font-display font-bold text-amber-900 mb-1 text-lg">Woodworking for Beginners</h3>
+        <p class="text-sm text-gray-600 mb-3">Master basic woodworking tools and techniques</p>
+        <div class="flex justify-between items-center text-xs text-gray-500">
+         <span>⏱️ 45 min</span> <span>⭐ 4.7</span>
+        </div>
+       </div>
+      </div><!-- Video 5 -->
+      <div class="video-card fade-in stagger-5" onclick="playVideo('https://www.youtube.com/embed/QnZSNp9VQ3Q')">
+       <div class="video-card-image"><img src="bead.jpg.jpeg" alt="Jewelry tutorial" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
+       </div>
+       <div class="play-button"></div>
+       <div class="p-4 bg-white">
+        <h3 class="font-display font-bold text-amber-900 mb-1 text-lg">DIY Jewelry Making</h3>
+        <p class="text-sm text-gray-600 mb-3">Create stunning jewelry pieces from home</p>
+        <div class="flex justify-between items-center text-xs text-gray-500">
+         <span>⏱️ 28 min</span> <span>⭐ 4.9</span>
+        </div>
+       </div>
+      </div><!-- Video 6 -->
+      <div class="video-card fade-in stagger-6" onclick="playVideo('https://www.youtube.com/embed/0Y3pYgwE0SY')">
+       <div class="video-card-image"><img src="hand.jpg.jpeg" alt="Embroidery tutorial" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
+       </div>
+       <div class="play-button"></div>
+       <div class="p-4 bg-white">
+        <h3 class="font-display font-bold text-amber-900 mb-1 text-lg">Hand Embroidery Stitches</h3>
+        <p class="text-sm text-gray-600 mb-3">Learn essential embroidery techniques and stitches</p>
+        <div class="flex justify-between items-center text-xs text-gray-500">
+         <span>⏱️ 22 min</span> <span>⭐ 4.8</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Gallery Section -->
+   <section id="gallery" class="section-padding gradient-bg">
+    <div class="max-w-7xl mx-auto">
+     <h2 class="text-5xl font-display font-bold text-amber-900 mb-2 text-center slide-up">Student Gallery</h2>
+     <p class="text-center text-gray-700 mb-12 slide-up stagger-1">Inspiring creations from our talented community</p>
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="craft-card fade-in stagger-1">
+       <div class="craft-card-image bg-gradient-to-br from-purple-400 to-pink-400"><img src="canvas.jpg.jpeg" alt="Canvas art gallery" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
+       </div>
+       <div class="p-4">
+        <p class="font-semibold text-amber-900">Beautiful Canvas Art</p>
+        <p class="text-sm text-gray-600">by anjali</p>
+       </div>
+      </div>
+      <div class="craft-card fade-in stagger-2">
+       <div class="craft-card-image bg-gradient-to-br from-blue-400 to-teal-400"><img src="swet.jpg.jpeg" alt="Knitted sweater gallery" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
+       </div>
+       <div class="p-4">
+        <p class="font-semibold text-amber-900">Hand-Knit Sweater</p>
+        <p class="text-sm text-gray-600">by tanya</p>
+       </div>
+      </div>
+      <div class="craft-card fade-in stagger-3">
+       <div class="craft-card-image bg-gradient-to-br from-orange-400 to-red-400"><img src="cyra.jpg.jpeg" alt="Pottery gallery" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
+       </div>
+       <div class="p-4">
+        <p class="font-semibold text-amber-900">Ceramic Pottery Set</p>
+        <p class="text-sm text-gray-600">by sonam</p>
+       </div>
+      </div>
+      <div class="craft-card fade-in stagger-4">
+       <div class="craft-card-image bg-gradient-to-br from-yellow-400 to-amber-400"><img src="tika.jpg.jpeg" alt="Jewelry gallery" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
+       </div>
+       <div class="p-4">
+        <p class="font-semibold text-amber-900">Beaded Jewelry</p>
+        <p class="text-sm text-gray-600">by Jessica</p>
+       </div>
+      </div>
+      <div class="craft-card fade-in stagger-5">
+       <div class="craft-card-image bg-gradient-to-br from-green-400 to-emerald-400"><img src="stand.jpg.jpeg" alt="Wooden cabinet gallery" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
+       </div>
+       <div class="p-4">
+        <p class="font-semibold text-amber-900">Wooden Cabinet</p>
+        <p class="text-sm text-gray-600">by muskan</p>
+       </div>
+      </div>
+      <div class="craft-card fade-in stagger-6">
+       <div class="craft-card-image bg-gradient-to-br from-indigo-400 to-purple-400"><img src="lotus.jpg.jpeg" alt="Embroidered pillow gallery" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
+       </div>
+       <div class="p-4">
+        <p class="font-semibold text-amber-900">3-D craft</p>
+        <p class="text-sm text-gray-600">by angel</p>
+       </div>
+      </div>
+      <div class="craft-card fade-in stagger-1">
+       <div class="craft-card-image bg-gradient-to-br from-rose-400 to-pink-400"><img src="sheet.jpg.jpeg" alt="Mixed media art gallery" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
+       </div>
+       <div class="p-4">
+        <p class="font-semibold text-amber-900">project sheets</p>
+        <p class="text-sm text-gray-600">by manocha</p>
+       </div>
+      </div>
+      <div class="craft-card fade-in stagger-2">
+       <div class="craft-card-image bg-gradient-to-br from-cyan-400 to-blue-400"><img src="wo.jpg.jpeg" alt="Woven tapestry gallery" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
+       </div>
+       <div class="p-4">
+        <p class="font-semibold text-amber-900">Woven Tapestry</p>
+        <p class="text-sm text-gray-600">by gourav</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Testimonials Section -->
+   <section class="section-padding bg-white/70">
+    <div class="max-w-7xl mx-auto">
+     <h2 class="text-5xl font-display font-bold text-amber-900 mb-2 text-center slide-up">What Our Crafters Say</h2>
+     <p class="text-center text-gray-600 mb-12 slide-up stagger-1">Real feedback from our amazing community</p>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="testimonial-card fade-in stagger-1">
+       <div class="flex gap-1 mb-4">
+        <span class="text-yellow-500">⭐</span> <span class="text-yellow-500">⭐</span> <span class="text-yellow-500">⭐</span> <span class="text-yellow-500">⭐</span> <span class="text-yellow-500">⭐</span>
+       </div>
+       <p class="text-gray-700 mb-4">"Craft Haven transformed my creative journey. The tutorials are incredibly detailed and the community is so supportive!"</p>
+       <p class="font-semibold text-amber-900">anjali manocha</p>
+       <p class="text-sm text-gray-600">Painting Enthusiast</p>
+      </div>
+      <div class="testimonial-card fade-in stagger-2">
+       <div class="flex gap-1 mb-4">
+        <span class="text-yellow-500">⭐</span> <span class="text-yellow-500">⭐</span> <span class="text-yellow-500">⭐</span> <span class="text-yellow-500">⭐</span> <span class="text-yellow-500">⭐</span>
+       </div>
+       <p class="text-gray-700 mb-4">"From absolute beginner to creating beautiful pieces in just weeks. The step-by-step guides make it so easy!"</p>
+       <p class="font-semibold text-amber-900">riddhem kapoor</p>
+       <p class="text-sm text-gray-600">Woodworking Learner</p>
+      </div>
+      <div class="testimonial-card fade-in stagger-3">
+       <div class="flex gap-1 mb-4">
+        <span class="text-yellow-500">⭐</span> <span class="text-yellow-500">⭐</span> <span class="text-yellow-500">⭐</span> <span class="text-yellow-500">⭐</span> <span class="text-yellow-500">⭐</span>
+       </div>
+       <p class="text-gray-700 mb-4">"Best investment I've made! The instructors are experts and the content quality is outstanding. Highly recommend!"</p>
+       <p class="font-semibold text-amber-900">sonam pahuja</p>
+       <p class="text-sm text-gray-600">Jewelry Maker</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Newsletter Section -->
+   <section class="section-padding gradient-dark text-white">
+    <div class="max-w-2xl mx-auto text-center fade-in">
+     <h2 class="text-5xl font-display font-bold mb-4">Join Our Community</h2>
+     <p class="text-amber-100 mb-8 text-lg">Get exclusive tutorials, tips, and creative inspiration delivered to your inbox</p>
+     <form onsubmit="handleNewsletterSubmit(event)" class="flex gap-3 flex-col sm:flex-row mb-4">
+      <input type="email" placeholder="Enter your email address" required class="flex-1 px-6 py-4 rounded-lg text-gray-900 font-medium focus:ring-2 focus:ring-amber-400"> <button type="submit" class="btn-craft bg-amber-500 text-white px-8 py-4 font-semibold hover:bg-amber-400 whitespace-nowrap">Subscribe Now</button>
+     </form>
+     <p id="newsletter-message" class="text-amber-200 text-sm"></p>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="contact" class="section-padding bg-white/70">
+    <div class="max-w-7xl mx-auto">
+     <h2 class="text-5xl font-display font-bold text-amber-900 mb-2 text-center slide-up">Get In Touch</h2>
+     <p class="text-center text-gray-600 mb-12 slide-up stagger-1">Have questions? We'd love to hear from you</p>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+      <div class="stat-card text-center fade-in stagger-1">
+       <div class="text-5xl mb-4">
+        📧
+       </div>
+       <h3 class="font-semibold text-amber-900 mb-2">Email</h3>
+       <p class="text-gray-600"><a href="mailto:hello@crafthaven.com" class="hover:text-amber-900">hello@crafthaven.com</a></p>
+      </div>
+      <div class="stat-card text-center fade-in stagger-2">
+       <div class="text-5xl mb-4">
+        📞
+       </div>
+       <h3 class="font-semibold text-amber-900 mb-2">Phone</h3>
+       <p class="text-gray-600"><a href="tel:+1234567890" class="hover:text-amber-900">+91 935xxxxxx0</a></p>
+      </div>
+      <div class="stat-card text-center fade-in stagger-3">
+       <div class="text-5xl mb-4">
+        📍
+       </div>
+       <h3 class="font-semibold text-amber-900 mb-2">Location</h3>
+       <p class="text-gray-600">123 model town, Ambala City, AC 134001</p>
+      </div>
+     </div>
+     <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+      <form onsubmit="handleContactSubmit(event)" class="space-y-6">
+       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <input type="text" placeholder="Your Name" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-amber-900 focus:ring-0"> <input type="email" placeholder="Your Email" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-amber-900 focus:ring-0">
+       </div><input type="text" placeholder="Subject" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-amber-900 focus:ring-0"> <textarea placeholder="Your Message" rows="5" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-amber-900 focus:ring-0"></textarea> <button type="submit" class="w-full btn-craft bg-amber-900 text-white py-3 font-semibold hover:bg-amber-800">Send Message</button>
+      </form>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="bg-gray-900 text-white py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+     <div class="fade-in">
+      <h3 class="font-display font-bold text-2xl mb-4">Craft Haven</h3>
+      <p class="text-gray-400 mb-4">Master your creative skills and join our global community of crafters.</p>
+      <div class="flex gap-4">
+       <a href="#" class="text-2xl hover:text-amber-400 transition">📘</a> <a href="#" class="text-2xl hover:text-amber-400 transition">📷</a> <a href="#" class="text-2xl hover:text-amber-400 transition">🐦</a>
+      </div>
+     </div>
+     <div class="fade-in stagger-1">
+      <h4 class="font-semibold mb-4 text-lg">Explore</h4>
+      <ul class="space-y-2 text-gray-400">
+       <li><a href="#home" class="hover:text-white transition">Home</a></li>
+       <li><a href="#crafts" class="hover:text-white transition">Crafts</a></li>
+       <li><a href="#tutorials" class="hover:text-white transition">Tutorials</a></li>
+       <li><a href="#gallery" class="hover:text-white transition">Gallery</a></li>
+      </ul>
+     </div>
+     <div class="fade-in stagger-2">
+      <h4 class="font-semibold mb-4 text-lg">Categories</h4>
+      <ul class="space-y-2 text-gray-400">
+       <li><a href="#" class="hover:text-white transition">Knitting</a></li>
+       <li><a href="#" class="hover:text-white transition">Painting</a></li>
+       <li><a href="#" class="hover:text-white transition">Pottery</a></li>
+       <li><a href="#" class="hover:text-white transition">Jewelry</a></li>
+      </ul>
+     </div>
+     <div class="fade-in stagger-3">
+      <h4 class="font-semibold mb-4 text-lg">Company</h4>
+      <ul class="space-y-2 text-gray-400">
+       <li><a href="#" class="hover:text-white transition">About Us</a></li>
+       <li><a href="#" class="hover:text-white transition">Blog</a></li>
+       <li><a href="#" class="hover:text-white transition">Careers</a></li>
+       <li><a href="#" class="hover:text-white transition">Contact</a></li>
+      </ul>
+     </div>
+     <div class="fade-in stagger-4">
+      <h4 class="font-semibold mb-4 text-lg">Legal</h4>
+      <ul class="space-y-2 text-gray-400">
+       <li><a href="#" class="hover:text-white transition">Privacy</a></li>
+       <li><a href="#" class="hover:text-white transition">Terms</a></li>
+       <li><a href="#" class="hover:text-white transition">Cookies</a></li>
+       <li><a href="#" class="hover:text-white transition">License</a></li>
+      </ul>
+     </div>
+    </div>
+    <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+     <p>© 2026 Craft Haven. All rights reserved. Created with ❤️ for craft lovers worldwide.</p>
+    </div>
+   </footer><!-- Video Modal -->
+   <div id="videoModal" class="video-modal hidden modal-overlay" onclick="closeVideoModal(event)">
+    <button class="close-video" onclick="closeVideoModal()">✕</button>
+    <div class="video-modal-content" onclick="event.stopPropagation()">
+     <iframe id="videoPlayer" width="100%" height="600" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+   </div><!-- Contact Notification -->
+   <div id="contactNotification" class="fixed bottom-6 right-6 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg hidden flex items-center gap-3 z-50 animate-fadeIn">
+    <span>✓</span> <span>Message sent successfully!</span>
+   </div>
+  </div>
+  <script>
+    // Filter Crafts
+    function filterCrafts(category) {
+      const items = document.querySelectorAll('.craft-item');
+      const buttons = document.querySelectorAll('.filter-btn');
+      
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      items.forEach(item => {
+        if (category === 'all' || item.dataset.category === category) {
+          item.style.display = '';
+          setTimeout(() => item.classList.add('fade-in'), 10);
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // Video Player Functions
+    function playVideo(videoUrl) {
+      const modal = document.getElementById('videoModal');
+      const player = document.getElementById('videoPlayer');
+      player.src = videoUrl;
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideoModal(event) {
+      if (event && event.target.id !== 'videoModal') return;
+      const modal = document.getElementById('videoModal');
+      const player = document.getElementById('videoPlayer');
+      modal.classList.add('hidden');
+      player.src = '';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Scroll to Section
+    function scrollToSection(sectionId) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+      document.getElementById('mobileMenu').classList.remove('active');
+    }
+
+    // Newsletter Submission
+    function handleNewsletterSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      const messageEl = document.getElementById('newsletter-message');
+      
+      messageEl.textContent = '✓ Thanks for subscribing! Check your email.';
+      
+      setTimeout(() => {
+        form.reset();
+        messageEl.textContent = '';
+      }, 3000);
+    }
+
+    // Contact Form Submission
+    function handleContactSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      const notification = document.getElementById('contactNotification');
+      
+      notification.classList.remove('hidden');
+      form.reset();
+      
+      setTimeout(() => {
+        notification.classList.add('hidden');
+      }, 3000);
+    }
+
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('active');
+    }
+
+    // Close mobile menu on link click
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.remove('active');
+      });
+    });
+
+    // Close video modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeVideoModal();
+      }
+    });
+
+    // Smooth scroll behavior
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#') {
+          e.preventDefault();
+          scrollToSection(href.substring(1));
+        }
+      });
+    });
+
+    // Initialize animations on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in', 'scale-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.stat-card, .testimonial-card').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d283697605e91bc',t:'MTc3MTg2NTMzMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
